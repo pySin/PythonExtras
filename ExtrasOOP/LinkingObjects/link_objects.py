@@ -1,16 +1,16 @@
 # Link Objects
 
 
-data = [[3, "word1", False], [4, "word2", True], [5, "word3", False],
-        [6, "word4", True], [7, "word5", False], [8, "word6", True]]
+data = [[3, False], [4, True], [5, False],
+        [6, True], [7, False], [8, True]]
 
 
 class Node:
 
     def __init__(self, value, parent_node, allowance):
         self.value = value
-        self.parent_node = parent_node
         self.allowance = allowance
+        self.parent_node = parent_node
 
 
 class Solution:
@@ -19,8 +19,8 @@ class Solution:
         self.current_data = current_data
         self.nodes_collection: list[Node] = []
 
-    def add_node(self, data_piece):
-        self.nodes_collection = Node(*self.current_data)
+    def add_node(self, data_piece, parent_node):
+        self.nodes_collection.append(Node(data_piece[0], data_piece[1], parent_node))
 
 
 
