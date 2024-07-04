@@ -38,7 +38,11 @@ class AddNodes:
 nodes_collection_1 = AddNodes(data)
 nodes_collection_1.collect_nodes()
 print(nodes_collection_1.nodes_collection)
+last_node = nodes_collection_1.nodes_collection[-1]
 
+while last_node.parent_node:
+    print(last_node.value)
+    last_node = last_node.parent_node
 
 print("New")
 print("New2")
