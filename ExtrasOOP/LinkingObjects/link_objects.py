@@ -7,15 +7,22 @@ data = [[3, "word1", False], [4, "word2", True], [5, "word3", False],
 
 class Node:
 
-    def __init__(self, value, parent_node):
+    def __init__(self, value, parent_node, allowance):
         self.value = value
         self.parent_node = parent_node
+        self.allowance = allowance
 
 
 class Solution:
 
     def __init__(self, current_data):
         self.current_data = current_data
+        self.nodes_collection: list[Node] = []
+
+    def add_node(self, data_piece):
+        self.nodes_collection = Node(*self.current_data)
+
+
 
 
 print("New")
