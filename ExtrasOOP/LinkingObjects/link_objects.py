@@ -9,9 +9,13 @@ class Node:
 
     def __init__(self, value, parent_node):
         self.value = value
-        self.parent_mode = parent_node
+        self.parent_node = parent_node
 
 
+class Solution:
+
+    def __init__(self, current_data):
+        self.current_data = current_data
 
 
 print("New")
