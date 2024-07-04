@@ -27,13 +27,17 @@ class AddNodes:
         for data_piece in self.current_data:
             if not self.nodes_collection:
                 current_node = Node(data_piece[0], data_piece[1], old_node)
+                self.nodes_collection.append(current_node)
                 old_node = current_node
             else:
                 current_node = Node(data_piece[0], data_piece[1], old_node)
+                self.nodes_collection.append(current_node)
                 old_node = current_node
 
 
-
+nodes_collection_1 = AddNodes(data)
+nodes_collection_1.collect_nodes()
+print(nodes_collection_1.nodes_collection)
 
 
 print("New")
