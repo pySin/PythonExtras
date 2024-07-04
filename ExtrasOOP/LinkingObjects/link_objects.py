@@ -1,4 +1,19 @@
 # Link Objects
+
+
+data = [[3, "word1", False], [4, "word2", True], [5, "word3", False],
+        [6, "word4", True], [7, "word5", False], [8, "word6", True]]
+
+
+class Node:
+
+    def __init__(self, value, parent_node):
+        self.value = value
+        self.parent_mode = parent_node
+
+
+
+
 print("New")
 print("New2")
 print("New 3")
