@@ -15,8 +15,7 @@ class Box:
 
 class BoxContainer:
 
-    def __init__(self, box: Box):
-        self.box: Box = box
+    def __init__(self):
         self.container = []
 
 
@@ -24,5 +23,8 @@ class Reading:
 
     def __init__(self, c_words: list[str]):
         self.c_words = c_words
+        self.box_container = BoxContainer()
 
-    def add_path
+    def add_step(self, word, letter_index, letter):
+        current_box = Box(word, letter_index, letter)
+        self.box_container.container.append(current_box)
