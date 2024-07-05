@@ -29,3 +29,4 @@ class Reading:
     def add_step(self, word, letter_index, letter):
         current_box = Box(word, letter_index, letter, self.previous_box)
         self.box_container.container.append(current_box)
+        self.previous_box = current_box
