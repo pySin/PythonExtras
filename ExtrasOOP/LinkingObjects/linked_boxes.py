@@ -30,3 +30,9 @@ class Reading:
         current_box = Box(word, letter_index, letter, self.previous_box)
         self.box_container.container.append(current_box)
         self.previous_box = current_box
+
+    def read(self):
+        for word in self.c_words:
+            for letter in word:
+                if letter in "aeiou":
+                    self.add_step()
