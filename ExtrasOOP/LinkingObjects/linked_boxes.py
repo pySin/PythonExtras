@@ -20,4 +20,9 @@ class BoxContainer:
         self.container = []
 
 
+class Reading:
 
+    def __init__(self, c_words: list[str]):
+        self.c_words = c_words
+
+    def add_path
