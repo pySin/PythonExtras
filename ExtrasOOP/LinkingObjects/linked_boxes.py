@@ -59,4 +59,9 @@ if __name__ == "__main__":
         print("Letter Index: ", box_item.letter_index)
         print("Letter", box_item.letter)
         box_item = box_item.previous_box
+    else:
+        print("Word Index: ", box_item.word_index)
+        print("Word: ", box_item.word)
+        print("Letter Index: ", box_item.letter_index)
+        print("Letter", box_item.letter)
 
