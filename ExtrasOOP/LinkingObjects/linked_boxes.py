@@ -51,3 +51,10 @@ if __name__ == "__main__":
         print("Letter index:", box.letter_index)
         print(box.previous_box)
 
+    # Link back Box objects
+    box_item = read_words.box_container.container[-1]
+    while box_item.previous_box is not None:
+        print(box_item.word_index)
+        print(box_item.letter_index)
+        box_item = box_item.previous_box
+
