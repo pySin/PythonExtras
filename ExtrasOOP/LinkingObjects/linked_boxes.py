@@ -36,3 +36,7 @@ class Reading:
             for j in range(len(self.c_words[i])):
                 if self.c_words[i][j] in "aeiou":
                     self.add_step(self.c_words[i], j, self.c_words[i][j])
+
+
+if __name__ == "__main__":
+    container = BoxContainer()
