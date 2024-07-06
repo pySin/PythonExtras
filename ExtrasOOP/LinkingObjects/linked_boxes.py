@@ -44,17 +44,19 @@ class Reading:
 if __name__ == "__main__":
     read_words = Reading(words)
     read_words.read()
-    for box in read_words.box_container.container:
-        print(box.letter)
-        print(box.word)
-        print("Word index:", box.word_index)
-        print("Letter index:", box.letter_index)
-        print(box.previous_box)
+    # for box in read_words.box_container.container:
+    #     print(box.letter)
+    #     print(box.word)
+    #     print("Word index:", box.word_index)
+    #     print("Letter index:", box.letter_index)
+    #     print(box.previous_box)
 
     # Link back Box objects
     box_item = read_words.box_container.container[-1]
     while box_item.previous_box is not None:
-        print(box_item.word_index)
-        print(box_item.letter_index)
+        print("Word Index: ", box_item.word_index)
+        print("Word: ", box_item.word)
+        print("Letter Index: ", box_item.letter_index)
+        print("Letter", box_item.letter)
         box_item = box_item.previous_box
 
