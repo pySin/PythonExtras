@@ -6,7 +6,8 @@ words = ["Bicycle", "Elections", "Popularity", "Football", "Airplane"]
 
 class Box:
 
-    def __init__(self, word, letter_index, letter, previous_box):
+    def __init__(self, word_index, word, letter_index, letter, previous_box):
+        self.word_index = word_index
         self.word = word
         self.letter_index = letter_index
         self.letter = letter
@@ -26,8 +27,8 @@ class Reading:
         self.box_container = BoxContainer()
         self.previous_box = None
 
-    def add_step(self, word, letter_index, letter):
-        current_box = Box(word, letter_index, letter, self.previous_box)
+    def add_step(self, word_index, word, letter_index, letter):
+        current_box = Box(word_index, word, letter_index, letter, self.previous_box)
         self.box_container.container.append(current_box)
         self.previous_box = current_box
 
@@ -35,9 +36,9 @@ class Reading:
         for i in range(len(self.c_words)):
             for j in range(len(self.c_words[i])):
                 if self.c_words[i][j] in "aeiou":
-                    self.add_step(self.c_words[i], j, self.c_words[i][j])
+                    self.add_step(i, self.c_words[i], j, self.c_words[i][j])
                 else:
-                    self.add_step(self.c_words[i], j, self.c_words[i][j])
+                    self.add_step(i, self.c_words[i], j, self.c_words[i][j])
 
 
 if __name__ == "__main__":
@@ -46,6 +47,7 @@ if __name__ == "__main__":
     for box in read_words.box_container.container:
         print(box.letter)
         print(box.word)
-        print(box.letter_index)
+        print("Word index:", box.word_index)
+        print("Letter index:", box.letter_index)
         print(box.previous_box)
 
