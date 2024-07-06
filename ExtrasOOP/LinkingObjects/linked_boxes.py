@@ -36,6 +36,8 @@ class Reading:
             for j in range(len(self.c_words[i])):
                 if self.c_words[i][j] in "aeiou":
                     self.add_step(self.c_words[i], j, self.c_words[i][j])
+                else:
+                    self.add_step(self.c_words[i], j, self.c_words[i][j])
 
 
 if __name__ == "__main__":
@@ -43,4 +45,7 @@ if __name__ == "__main__":
     read_words.read()
     for box in read_words.box_container.container:
         print(box.letter)
+        print(box.word)
+        print(box.letter_index)
         print(box.previous_box)
+
