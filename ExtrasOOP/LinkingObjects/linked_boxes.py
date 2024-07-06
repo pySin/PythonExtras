@@ -17,7 +17,8 @@ class Box:
 class BoxContainer:
 
     def __init__(self):
-        self.container = []
+        self.container_vowels = []
+        self.container_consonants = []
 
 
 class Reading:
@@ -27,9 +28,9 @@ class Reading:
         self.box_container = BoxContainer()
         self.previous_box = None
 
-    def add_step(self, word_index, word, letter_index, letter):
+    def add_step_vowels(self, word_index, word, letter_index, letter):
         current_box = Box(word_index, word, letter_index, letter, self.previous_box)
-        self.box_container.container.append(current_box)
+        self.box_container.container_vowels.append(current_box)
         self.previous_box = current_box
 
     def read(self):
@@ -64,4 +65,3 @@ if __name__ == "__main__":
         print("Word: ", box_item.word)
         print("Letter Index: ", box_item.letter_index)
         print("Letter", box_item.letter)
-
