@@ -32,7 +32,7 @@ class Reading:
         self.previous_box = current_box
 
     def read(self):
-        for word in self.c_words:
-            for letter in word:
-                if letter in "aeiou":
-                    self.add_step()
+        for i in range(len(self.c_words)):
+            for j in range(len(self.c_words[i])):
+                if self.c_words[i][j] in "aeiou":
+                    self.add_step(self.c_words[i], j, self.c_words[i][j])
