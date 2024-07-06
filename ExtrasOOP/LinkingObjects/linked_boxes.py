@@ -39,4 +39,8 @@ class Reading:
 
 
 if __name__ == "__main__":
-    container = BoxContainer()
+    read_words = Reading(words)
+    read_words.read()
+    for box in read_words.box_container.container:
+        print(box.letter)
+        print(box.previous_box)
