@@ -41,4 +41,3 @@ class Letter:
         self.articulation = Letter.letter_articulations[letter]
 
         # Todo: Add more articulation characteristics
-
