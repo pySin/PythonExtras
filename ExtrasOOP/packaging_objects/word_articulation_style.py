@@ -31,12 +31,14 @@ class Letter:
         "v": "teeth labial",
         "w": "teeth labial",
         "x": "teeth labial",
-        "y": "teeth labial",
-        "z": "teeth labial",
+        "y": "double vowel",
+        "z": "double teeth",
     }
 
     def __init__(self, word, letter):
         self.word = word
         self.letter = letter
-        self.articulation = None
+        self.articulation = Letter.letter_articulations[letter]
+
+        # Todo: Add more articulation characteristics
 
