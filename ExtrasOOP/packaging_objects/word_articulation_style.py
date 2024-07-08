@@ -8,36 +8,36 @@ words = ["Bicycle", "Elections", "Popularity", "Football", "Airplane"]
 class Letter:
 
     letter_articulations = {
-        "a": "open vowel",
-        "b": "bilabial consonant",
-        "c": "teeth labial",
-        "d": "teeth labial",
-        "e": "teeth labial",
-        "g": "teeth labial",
-        "h": "teeth labial",
-        "i": "teeth labial",
-        "j": "teeth labial",
-        "k": "teeth labial",
-        "l": "teeth labial",
-        "m": "teeth labial",
-        "n": "teeth labial",
-        "o": "teeth labial",
-        "p": "teeth labial",
-        "q": "teeth labial",
-        "r": "teeth labial",
-        "s": "teeth labial",
-        "t": "teeth labial",
-        "u": "teeth labial",
-        "v": "teeth labial",
-        "w": "teeth labial",
-        "x": "teeth labial",
-        "y": "double vowel",
-        "z": "double teeth",
+        "a": ["open vowel", "closed"],
+        "b": ["bilabial consonant", "open"],
+        "c": ["teeth labial", "open"],
+        "d": ["teeth labial", "closed"],
+        "e": ["teeth labial", "open"],
+        "g": ["teeth labial", "open"],
+        "h": ["teeth labial", "open"],
+        "i": ["teeth labial", "open"],
+        "j": ["teeth labial", "closed"],
+        "k": ["teeth labial", "closed"],
+        "l": ["teeth labial", "closed"],
+        "m": ["teeth labial", "open"],
+        "n": ["teeth labial", "closed"],
+        "o": ["teeth labial", "closed"],
+        "p": ["teeth labial", "open"],
+        "q": ["teeth labial", "closed"],
+        "r": ["teeth labial", "open"],
+        "s": ["teeth labial", "open"],
+        "t": ["teeth labial", "open"],
+        "u": ["teeth labial", "closed"],
+        "v": ["teeth labial", "closed"],
+        "w": ["teeth labial", "open"],
+        "x": ["teeth labial", "open"],
+        "y": ["double vowel", "closed"],
+        "z": ["double teeth", "closed"]
     }
 
     def __init__(self, word, letter):
         self.word = word
         self.letter = letter
-        self.articulation = Letter.letter_articulations[letter]
+        self.articulation = Letter.letter_articulations[letter[0]]
 
         # Todo: Add more articulation characteristics
