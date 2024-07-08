@@ -35,9 +35,20 @@ class Letter:
         "z": ["double teeth", "closed"]
     }
 
-    def __init__(self, word, letter):
+    def __init__(self, word: str, letter: str):
         self.word = word
         self.letter = letter
         self.articulation = Letter.letter_articulations[letter[0]]
+        self.openness = Letter.letter_articulations[letter[1]]
 
-        # Todo: Add more articulation characteristics
+
+class Word:
+
+    def __init__(self, word: str):
+        self.word = word
+        self.letters: list[Letter] = []
+
+    def add_letter(self, letter: str):
+        self.letters.append(Letter(self.word, letter))
+
+
