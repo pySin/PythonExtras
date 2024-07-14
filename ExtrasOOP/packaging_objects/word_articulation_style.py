@@ -52,3 +52,9 @@ class Word:
         self.letters.append(Letter(self.word, letter))
 
 
+# TODO: Add "read" class
+class Read:
+
+    def __init__(self, current_words):
+        self.words = words
+
