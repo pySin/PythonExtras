@@ -52,9 +52,14 @@ class Word:
         self.letters.append(Letter(self.word, letter))
 
 
-# TODO: Add "read" class
 class Read:
 
     def __init__(self, current_words):
-        self.words = words
+        self.current_words = current_words
+        self.words_info: list[Word] = []
+
+    def word_profiles(self):
+        for word in self.current_words:
+            self.words_info.append(Word(word))
+
 
