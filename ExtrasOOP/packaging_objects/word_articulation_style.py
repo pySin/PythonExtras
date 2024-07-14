@@ -65,4 +65,6 @@ class Read:
 
 if __name__ == "__main__":
     words_traits = Read(words)
-    print(words_traits)
+    words_traits.word_profiles()
+    for word_package in words_traits.words_info:
+        print(word_package)
