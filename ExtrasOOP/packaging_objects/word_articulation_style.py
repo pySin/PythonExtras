@@ -63,3 +63,6 @@ class Read:
             self.words_info.append(Word(word))
 
 
+if __name__ == "__main__":
+    words_traits = Read(words)
+    print(words_traits)
