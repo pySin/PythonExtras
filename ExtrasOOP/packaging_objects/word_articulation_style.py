@@ -14,6 +14,7 @@ class Letter:
         "d": ["teeth labial", "closed"],
         "e": ["teeth labial", "open"],
         "g": ["teeth labial", "open"],
+        "f": ["teeth labial", "open"],
         "h": ["teeth labial", "open"],
         "i": ["teeth labial", "open"],
         "j": ["teeth labial", "closed"],
@@ -38,8 +39,8 @@ class Letter:
     def __init__(self, word: str, letter: str):
         self.word = word
         self.letter = letter
-        self.articulation = Letter.letter_articulations[letter[0]]
-        self.openness = Letter.letter_articulations[letter[1]]
+        self.articulation = Letter.letter_articulations[letter][0]
+        self.openness = Letter.letter_articulations[letter][1]
 
 
 class Word:
@@ -60,7 +61,10 @@ class Read:
 
     def word_profiles(self):
         for word in self.current_words:
-            self.words_info.append(Word(word))
+            word_o = Word(word)
+            for letter in word:
+                word_o.add_letter(letter.lower())
+            self.words_info.append(word_o)
 
 
 if __name__ == "__main__":
@@ -68,3 +72,8 @@ if __name__ == "__main__":
     words_traits.word_profiles()
     for word_package in words_traits.words_info:
         print(word_package)
+        for o_letter in word_package.letters:
+            print(o_letter.letter)
+            print(o_letter.articulation)
+            print(o_letter.openness)
+            print(o_letter)
