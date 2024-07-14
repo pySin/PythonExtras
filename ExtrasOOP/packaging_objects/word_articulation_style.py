@@ -6,7 +6,9 @@ words = ["Bicycle", "Elections", "Popularity", "Football", "Airplane"]
 
 
 class Letter:
+    # Letter object with arbitrary number of characteristics
 
+    # Dictionary with letter traits
     letter_articulations = {
         "a": ["open vowel", "closed"],
         "b": ["bilabial consonant", "open"],
@@ -44,6 +46,9 @@ class Letter:
 
 
 class Word:
+
+    # Create a word package of letters with specific
+    # characteristics.
 
     def __init__(self, word: str):
         self.word = word
