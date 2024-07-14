@@ -46,7 +46,6 @@ class Letter:
 
 
 class Word:
-
     # Create a word package of letters with specific
     # characteristics.
 
@@ -54,16 +53,21 @@ class Word:
         self.word = word
         self.letters: list[Letter] = []
 
+    # Add characterised letter representations to a letters
+    # container to form a package.
     def add_letter(self, letter: str):
         self.letters.append(Letter(self.word, letter))
 
 
 class Read:
+    # Read and organise the word representations.
 
     def __init__(self, current_words):
         self.current_words = current_words
         self.words_info: list[Word] = []
 
+    # Create the word and letter representations. Organise them
+    # in a container.
     def word_profiles(self):
         for word in self.current_words:
             word_o = Word(word)
@@ -72,6 +76,7 @@ class Read:
             self.words_info.append(word_o)
 
 
+# Create objects and call functions to form word profiles.
 if __name__ == "__main__":
     words_traits = Read(words)
     words_traits.word_profiles()
