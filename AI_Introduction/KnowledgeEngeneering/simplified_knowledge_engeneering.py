@@ -25,5 +25,6 @@ for model in permutations:
     if model["Nikolai"] == True and not(model["Nikolai"] == True and model["rain"] == True):
         print(f"Model found: {model}")
         # The inability to visit Nikolai when it's raining and the fact that Nicolai
-        # was visited implies that it doesn't rain.
+        # was visited implies that it doesn't rain. All the results that are returned
+        # have value of false for "Rain"
 
