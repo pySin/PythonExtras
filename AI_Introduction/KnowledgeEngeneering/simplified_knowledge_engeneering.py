@@ -16,7 +16,12 @@ class GenerateModels:
             for element_2_iteration in self.elements:
                 current_model[element_2_iteration] = True
             self.model.append(current_model)
+        return self.model
 
 
+if __name__ == "__main__":
+    models = GenerateModels(["Ivan", "Kolio", "Nikolai", "rain"])
+    models_list = models.generate()
+    print(models_list)
 
 
