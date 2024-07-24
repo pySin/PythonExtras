@@ -7,21 +7,28 @@ class PropositionalElement:
 class GenerateModels:
     def __init__(self, *elements):
         self.elements: list = list(elements)
-        self.model: list = []
+        self.model_elements = []
+        for tf in [True, False]:
+            pairs = {}
+            for el in self.elements:
+                pairs[el] = tf
+            self.model_elements.append(pairs)
+        print(self.model_elements)
 
     def generate(self):
+        true_elements = self.model_elements[0]
+        false_elements = self.model_elements[1]
 
-        for element in self.elements:
-            current_model = {}
-            for element_2_iteration in self.elements:
-                current_model[element_2_iteration] = True
-            self.model.append(current_model)
-        return self.model
+        for te in true_elements:
+
+            for fe in false_elements:
+                if te == fe:
+                    pass
+                else:
+
 
 
 if __name__ == "__main__":
-    models = GenerateModels(["Ivan", "Kolio", "Nikolai", "rain"])
-    models_list = models.generate()
-    print(models_list)
+    models = GenerateModels("Ivan", "Kolio", "Nikolai", "rain")
 
 
