@@ -14,5 +14,9 @@ class GenerateModels:
         for element in self.elements:
             current_model = {}
             for element_2_iteration in self.elements:
-                for tf in [True, False]:
-                    current_model[element_2_iteration] = tf
+                current_model[element_2_iteration] = True
+            self.model.append(current_model)
+
+
+
+
