@@ -1,34 +1,26 @@
-class PropositionalElement:
-    def __init__(self, name: str):
-        self.name = name
-        self.value = None
+permutations = [{"Ivan": True, "Kolio": True, "Nikolai": True, "rain": True},
+                {"Ivan": True, "Kolio": False, "Nikolai": True, "rain": True},
+                {"Ivan": True, "Kolio": True, "Nikolai": False, "rain": True},
+                {"Ivan": True, "Kolio": True, "Nikolai": True, "rain": False},
+                {"Ivan": False, "Kolio": True, "Nikolai": True, "rain": True},
 
+                {"Ivan": True, "Kolio": True, "Nikolai": False, "rain": False},
+                {"Ivan": True, "Kolio": False, "Nikolai": False, "rain": True},
+                {"Ivan": False, "Kolio": False, "Nikolai": True, "rain": True},
+                {"Ivan": True, "Kolio": False, "Nikolai": True, "rain": False},
+                {"Ivan": False, "Kolio": True, "Nikolai": False, "rain": True},
+                {"Ivan": False, "Kolio": True, "Nikolai": True, "rain": False},
 
-class GenerateModels:
-    def __init__(self, *elements):
-        self.elements: list = list(elements)
-        self.model_elements = []
-        for tf in [True, False]:
-            pairs = {}
-            for el in self.elements:
-                pairs[el] = tf
-            self.model_elements.append(pairs)
-        print(self.model_elements)
+                {"Ivan": False, "Kolio": False, "Nikolai": False, "rain": False},
+                {"Ivan": False, "Kolio": False, "Nikolai": False, "rain": True},
+                {"Ivan": False, "Kolio": False, "Nikolai": True, "rain": False},
+                {"Ivan": False, "Kolio": True, "Nikolai": False, "rain": False},
+                {"Ivan": True, "Kolio": False, "Nikolai": False, "rain": False},
+                ]
 
-    def generate(self):
-        true_elements = self.model_elements[0]
-        false_elements = self.model_elements[1]
-
-        for te in true_elements:
-
-            for fe in false_elements:
-                if te == fe:
-                    pass
-                else:
-
-
-
-if __name__ == "__main__":
-    models = GenerateModels("Ivan", "Kolio", "Nikolai", "rain")
+for model in permutations:
+    if model["Ivan"] == True and model["Kolio"] == True and model["rain"] == True \
+            and model["Nikolai"] == False:
+        print(f"Model found: {model}")
 
 
