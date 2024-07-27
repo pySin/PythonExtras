@@ -49,3 +49,12 @@ class FullArm:
         self.hand.grab(physical_object)
 
 
+def create_full_arm():
+    fingers = [Finger(f"finger{finger_i}", finger_i * 1.1) for finger_i in range(5)]
+    print(fingers)
+
+
+if __name__ == "__main__":
+    create_full_arm()
+
+
