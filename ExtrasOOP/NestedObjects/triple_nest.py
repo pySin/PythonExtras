@@ -11,7 +11,7 @@ class Finger:
 
 class Hand:
 
-    def __init__(self, *fingers: Finger):
+    def __init__(self, *fingers: list[Finger]):
         if len(fingers) == 5:
             self.thumb = fingers[0]
             self.index_finger = fingers[1]
@@ -28,7 +28,7 @@ class Hand:
 
 class Arm:
 
-    def __init__(self, size:float):
+    def __init__(self, size: float):
         self.size = size
 
 
@@ -51,10 +51,19 @@ class FullArm:
 
 def create_full_arm():
     fingers = [Finger(f"finger{finger_i}", finger_i * 1.1) for finger_i in range(5)]
-    print(fingers)
+    hand1 = Hand(*fingers)
+    arm1 = Arm(13.4)
+    forearm1 = Forearm(12.8)
+    full_arm = FullArm(hand1, arm1, forearm1)
+    return full_arm
 
 
 if __name__ == "__main__":
-    create_full_arm()
+    f_arm = create_full_arm()
+    for el in f_arm.__dict__:
+        print(el)
+        if el == "hand":
+
+
 
 
