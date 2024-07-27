@@ -5,7 +5,7 @@ class Finger:
         self.length = length
 
     @staticmethod
-    def flex(self, strength: float):
+    def flex(strength: float):
         return "powerful" if strength > 3 else "weak"
 
 
