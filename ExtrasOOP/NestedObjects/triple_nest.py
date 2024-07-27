@@ -21,9 +21,22 @@ class Hand:
         else:
             raise ValueError("There should be 5 fingers")
 
+        self.counter = -1
+
     @staticmethod
     def grab(physical_object: str):
         return f"{physical_object} taken."
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        all_fingers = [self.thumb, self.index_finger, self.middle, self.ring_finger, self.pinky]
+        self.counter += 1
+
+        if self.counter < len(all_fingers):
+            return all_fingers[self.counter]
+        raise StopIteration
 
 
 class Arm:
@@ -60,9 +73,10 @@ def create_full_arm():
 
 if __name__ == "__main__":
     f_arm = create_full_arm()
-    for el in f_arm.__dict__:
-        print(el)
-        if el == "hand":
+    for fi in f_arm.hand:
+        print(type(fi))
+
+
 
 
 
