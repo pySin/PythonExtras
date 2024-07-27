@@ -73,11 +73,7 @@ def create_full_arm():
 
 if __name__ == "__main__":
     f_arm = create_full_arm()
+    print(f"Full Arm address: {f_arm}")
+    print(f"Hand object address: {f_arm.hand}")
     for fi in f_arm.hand:
-        print(fi.length)
-
-
-
-
-
-
+        print(f"Fingers object address: {fi}")
