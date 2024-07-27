@@ -74,7 +74,7 @@ def create_full_arm():
 if __name__ == "__main__":
     f_arm = create_full_arm()
     for fi in f_arm.hand:
-        print(type(fi))
+        print(fi.length)
 
 
 
