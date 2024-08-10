@@ -210,7 +210,7 @@ while True:
                             and (i, j) not in revealed):
                         move = (i, j)
 
-    # Make move and update AI knowledge
+    # Make a move and update AI knowledge
     if move:
         if game.is_mine(move):
             lost = True
