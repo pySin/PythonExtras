@@ -166,7 +166,6 @@ while True:
     # Check for a right-click to toggle flagging
     if right == 1 and not lost:
         mouse = pygame.mouse.get_pos()
-        print(f"Check for right click {mouse}")
         for i in range(HEIGHT):
             for j in range(WIDTH):
                 if cells[i][j].collidepoint(mouse) and (i, j) not in revealed:
@@ -210,14 +209,17 @@ while True:
                             and (i, j) not in flags
                             and (i, j) not in revealed):
                         move = (i, j)
+                        # print(f"User Made move: {mouse}")
 
     # Make a move and update AI knowledge
     if move:
+        # print(game.print())
         if game.is_mine(move):
             lost = True
         else:
             nearby = game.nearby_mines(move)
             revealed.add(move)
+            # print("Pre-mistake")
             ai.add_knowledge(move, nearby)
 
     pygame.display.flip()
