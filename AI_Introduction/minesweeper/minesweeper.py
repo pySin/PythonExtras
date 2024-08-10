@@ -31,3 +31,29 @@ class Minesweeper():
 
         # At first, player has found no mines
         self.mines_found = set()
+
+    def print(self):
+        """
+        Prints a text-based representation
+        of where mines are located.
+        """
+        for i in range(self.height):
+            print("--" * self.width + "-")
+            for j in range(self.width):
+                if self.board[i][j]:
+                    print("|X", end="")
+                else:
+                    print("| ", end="")
+            print("|")
+        print("--" * self.width + "-")
+
+    def is_mine(self, cell):
+        i, j = cell
+        return self.board[i][j]
+
+    def nearby_mines(self, cell):
+        """
+        Returns the number of mines that are
+        within one row and column of a given cell,
+        not including the cell itself.
+        """
