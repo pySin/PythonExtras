@@ -113,3 +113,10 @@ class Sentence():
         a cell is known to be a mine.
         """
         raise NotImplementedError
+
+    def mark_safe(self, cell):
+        """
+        Updates internal knowledge representation given the fact that
+        a cell is known to be safe.
+        """
+        raise NotImplementedError
