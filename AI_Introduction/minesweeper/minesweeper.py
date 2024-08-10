@@ -1,6 +1,7 @@
 import itertools
 import random
 
+
 class Minesweeper():
     """
     Minesweeper game representation
@@ -57,3 +58,22 @@ class Minesweeper():
         within one row and column of a given cell,
         not including the cell itself.
         """
+
+
+        # Keep count of nearby mines
+        count = 0
+
+        # Loop over all cells within one row and column
+        for i in range(cell[0] - 1, cell[0] + 2):
+            for j in range(cell[1] - 1, cell[1] + 2):
+
+                # Ignore the cell itself
+                if (i, j) == cell:
+                    continue
+
+                # Update count if cell in bounds and is mine
+                if 0 <= i < self.height and 0 <= j < self.width:
+                    if self.board[i][j]:
+                        count += 1
+
+        return count
