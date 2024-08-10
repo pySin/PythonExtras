@@ -101,6 +101,7 @@ class Sentence():
 
     def known_mines(self):
         # Returns the set of all cells in self.cells known to be mines.
+        # The mines must be removed from the set!!!?!
         raise NotImplementedError
 
     def known_safes(self):
