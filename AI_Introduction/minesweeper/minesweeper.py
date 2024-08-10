@@ -77,3 +77,7 @@ class Minesweeper():
                         count += 1
 
         return count
+
+    def won(self):
+        # Check if all mines are flagged
+        return self.mines_found == self.mines
