@@ -169,8 +169,8 @@ class MinesweeperAI():
         safe cell, how many neighboring cells have mines in them.
 
         This function should:
-            1) mark the cell as a move that has been made
-            2) mark the cell as safe
+            1) mark the cell as a move that has been made: Done
+            2) mark the cell as safe: Done
             3) add a new sentence to the AI's knowledge base
                based on the value of `cell` and `count`
             4) mark any additional cells as safe or as mines
@@ -178,6 +178,10 @@ class MinesweeperAI():
             5) add any new sentences to the AI's knowledge base
                if they can be inferred from existing knowledge
         """
+        self.moves_made.add(cell)
+        # print(self.moves_made)
+        self.safes.add(cell)
+        # print(f"Safe cells: {self.safes}")
         raise NotImplementedError
 
     def make_safe_move(self):
