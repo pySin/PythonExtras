@@ -210,6 +210,7 @@ while True:
                             and (i, j) not in revealed):
                         move = (i, j)
                         # print(f"User Made move: {mouse}")
+                        # print(f"Cell Coordinates: {move}")
 
     # Make a move and update AI knowledge
     if move:
