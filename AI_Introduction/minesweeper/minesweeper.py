@@ -182,6 +182,22 @@ class MinesweeperAI():
         # print(self.moves_made)
         self.safes.add(cell)
         # print(f"Safe cells: {self.safes}")
+
+        # Add a Sentence to the knowledge base
+        # Loop over all cells within one row and column
+        all_near_cells = []
+        for i in range(cell[0] - 1, cell[0] + 2):
+            for j in range(cell[1] - 1, cell[1] + 2):
+
+                # Ignore the cell itself
+                if (i, j) == cell:
+                    continue
+
+                # Update all near cells if cell in bounds
+                if 0 <= i < self.height and 0 <= j < self.width:
+                    all_near_cells.append((i, j))
+        print(f"All near cells: {all_near_cells}")
+
         raise NotImplementedError
 
     def make_safe_move(self):
