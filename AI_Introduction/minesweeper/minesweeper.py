@@ -197,6 +197,8 @@ class MinesweeperAI():
                 if 0 <= i < self.height and 0 <= j < self.width:
                     all_near_cells.append((i, j))
         print(f"All near cells: {all_near_cells}")
+        self.knowledge.append(Sentence(all_near_cells, count))
+        print(f"Sentences in knowledge: {[[s.cells, s.count] for s in self.knowledge]}")
 
         raise NotImplementedError
 
