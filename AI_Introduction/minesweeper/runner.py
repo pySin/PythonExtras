@@ -219,6 +219,7 @@ while True:
             lost = True
         else:
             nearby = game.nearby_mines(move)
+            # print(f"Nearby mines: {nearby}")
             revealed.add(move)
             # print("Pre-mistake")
             ai.add_knowledge(move, nearby)
