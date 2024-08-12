@@ -163,7 +163,7 @@ class MinesweeperAI():
             sentence.mark_safe(cell)
 
     def add_knowledge(self, cell, count):
-        self.mark_safe(cell)
+        # self.mark_safe(cell)
         """
         Called when the Minesweeper board tells us, for a given
         safe cell, how many neighboring cells have mines in them.
@@ -200,7 +200,11 @@ class MinesweeperAI():
         self.knowledge.append(Sentence(all_near_cells, count))
         print(f"Sentences in knowledge: {[[s.cells, s.count] for s in self.knowledge]}")
 
-        raise NotImplementedError
+        if count == 0:
+            for cell in all_near_cells:
+                self.mark_safe(cell)
+
+        # raise NotImplementedError
 
     def make_safe_move(self):
         """
