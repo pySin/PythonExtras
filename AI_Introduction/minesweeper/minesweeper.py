@@ -92,6 +92,8 @@ class Sentence():
     def __init__(self, cells, count):
         self.cells = set(cells)
         self.count = count
+        self.safe_cells = set()
+        self.found_mines = set()
 
     def __eq__(self, other):
         return self.cells == other.cells and self.count == other.count
@@ -120,7 +122,7 @@ class Sentence():
         Updates internal knowledge representation given the fact that
         a cell is known to be safe.
         """
-        self.safe_cells = 0
+
         if cell in self.cells:
             self.cells.remove(cell)
         raise NotImplementedError

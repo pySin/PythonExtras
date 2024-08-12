@@ -7,15 +7,13 @@
 
 # Non declared variable
 
-def var_function():
+# def var_function():
+#
+#     x = False
+#     if not x:
+#         a = 0
+#         x = True
+#
+#     a = a + 1
 
-    a = False
-    x = 0
-
-    if x == 0:
-        a = 1
-        x = 1
-    else:
-        a += 1
-    return a
-
+#
