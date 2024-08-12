@@ -120,6 +120,9 @@ class Sentence():
         Updates internal knowledge representation given the fact that
         a cell is known to be safe.
         """
+        self.safe_cells = 0
+        if cell in self.cells:
+            self.cells.remove(cell)
         raise NotImplementedError
 
 
