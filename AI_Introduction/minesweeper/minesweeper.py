@@ -214,7 +214,7 @@ class MinesweeperAI():
             for cell in all_near_cells:
                 self.mark_safe(cell)
 
-        print(f"Sentences in knowledge: {[[s.safe.cells, s.count] for s in self.knowledge]}")
+        print(f"Safe cells in Sentence: {[[s.safe_cells] for s in self.knowledge]}")
 
         # raise NotImplementedError
 
