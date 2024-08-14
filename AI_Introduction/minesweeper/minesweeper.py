@@ -208,13 +208,18 @@ class MinesweeperAI():
                     all_near_cells.append((i, j))
         print(f"All near cells: {all_near_cells}")
         self.knowledge.append(Sentence(all_near_cells, count))
-        print(f"Sentences in knowledge: {[[s.cells, s.count] for s in self.knowledge]}")
+        # print(f"Sentences in knowledge: {[[s.cells, s.count] for s in self.knowledge]}")
 
         if count == 0:
-            for cell in all_near_cells:
-                self.mark_safe(cell)
+            [self.safes.add(near_cell) for near_cell in all_near_cells]
 
+        # for cell in all_near_cells:
+        for cell in self.safes:
+            self.mark_safe(cell)
+
+        print(f"Sentences in knowledge: {[[s.cells, s.count] for s in self.knowledge]}")
         print(f"Safe cells in Sentence: {[[s.safe_cells] for s in self.knowledge]}")
+        print(f"Self.Safes {self.safes}")
 
         # raise NotImplementedError
 
