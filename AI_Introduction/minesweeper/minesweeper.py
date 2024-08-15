@@ -217,10 +217,12 @@ class MinesweeperAI():
         for cell in self.safes:
             self.mark_safe(cell)
 
-        # Add mines to a set
+        # Add mines to a mine set
         for s in self.knowledge:
             if len(s.cells) == s.count:
                 [self.mines.add(mine) for mine in s.cells]
+
+        # Check if mines in sentences. Delete mine cells
 
         print(f"Sentences in knowledge: {[[s.cells, s.count] for s in self.knowledge]}")
         print(f"Safe cells in Sentence: {[[s.safe_cells] for s in self.knowledge]}")
