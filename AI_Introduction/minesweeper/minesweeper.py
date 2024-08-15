@@ -222,7 +222,8 @@ class MinesweeperAI():
             if len(s.cells) == s.count:
                 [self.mines.add(mine) for mine in s.cells]
 
-        # Check if mines in sentences. Delete mine cells
+        # Check if mines in sentences. Delete mine cells and decrease count
+        # with -1. If count becomes 0 add remaining cells to safe cells.
 
         print(f"Sentences in knowledge: {[[s.cells, s.count] for s in self.knowledge]}")
         print(f"Safe cells in Sentence: {[[s.safe_cells] for s in self.knowledge]}")
