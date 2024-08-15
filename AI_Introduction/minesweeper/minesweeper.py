@@ -119,7 +119,7 @@ class Sentence():
             self.cells.remove(cell)
             self.count -= 1
 
-        raise NotImplementedError
+        # raise NotImplementedError
 
     def mark_safe(self, cell):
         """
@@ -219,8 +219,10 @@ class MinesweeperAI():
 
         # Add mines to a mine set
         for s in self.knowledge:
+            current_mines = set()
             if len(s.cells) == s.count:
-                [self.mines.add(mine) for mine in s.cells]
+                [current_mines.add(mine) for mine in s.cells]
+            [self.mark_mine(m) for m in current_mines]
 
         # Check if mines in sentences. Delete mine cells and decrease count
         # with -1. If count becomes 0 add remaining cells to safe cells.
