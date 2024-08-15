@@ -162,11 +162,6 @@ class MinesweeperAI():
         self.mines.add(cell)
         for sentence in self.knowledge:
             sentence.mark_mine(cell)
-            for mine_cell in self.mines:
-                if mine_cell in sentence.cells:
-                    sentence.mark_mine(mine_cell)
-                if sentence.count == 0 and len(sentence.cells) != 0:
-                    [self.safes.add(c) for c in sentence.cells]
 
     def mark_safe(self, cell):
         """
@@ -194,9 +189,7 @@ class MinesweeperAI():
                if they can be inferred from existing knowledge
         """
         self.moves_made.add(cell)
-        # print(self.moves_made)
         self.safes.add(cell)
-        # print(f"Safe cells: {self.safes}")
 
         # Add a Sentence to the knowledge base
         # Loop over all cells within one row and column
@@ -213,7 +206,6 @@ class MinesweeperAI():
                     all_near_cells.append((i, j))
         print(f"All near cells: {all_near_cells}")
         self.knowledge.append(Sentence(all_near_cells, count))
-        # print(f"Sentences in knowledge: {[[s.cells, s.count] for s in self.knowledge]}")
 
         if count == 0:
             [self.safes.add(near_cell) for near_cell in all_near_cells]
@@ -231,6 +223,10 @@ class MinesweeperAI():
 
         # Check if mines in sentences. Delete mine cells and decrease count
         # with -1. If count becomes 0 add remaining cells to safe cells.
+        for mine in self.mines:
+            for s in self.knowledge:
+                if mine in s.cells:
+                    self.mark_mine(mine)
 
         print(f"Sentences in knowledge: {[[s.cells, s.count] for s in self.knowledge]}")
         print(f"Safe cells in Sentence: {[[s.safe_cells] for s in self.knowledge]}")
