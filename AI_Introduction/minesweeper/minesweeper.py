@@ -261,4 +261,6 @@ class MinesweeperAI():
         j = random.randrange(0, 7)
 
         move = (i, j) if (i, j) not in self.moves_made.union(self.mines) else None
+        if not move:
+            self.make_random_move()
         return move
