@@ -162,6 +162,8 @@ class MinesweeperAI():
         self.mines.add(cell)
         for sentence in self.knowledge:
             sentence.mark_mine(cell)
+            if sentence.count == 0 and len(sentence.cells) != 0:
+                self.safes.union(sentence.cells)
 
     def mark_safe(self, cell):
         """
