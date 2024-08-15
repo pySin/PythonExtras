@@ -213,7 +213,7 @@ class MinesweeperAI():
         if count == 0:
             [self.safes.add(near_cell) for near_cell in all_near_cells]
 
-        # for cell in all_near_cells:
+        # Remove safe cells from Sentence objects.
         for cell in self.safes:
             self.mark_safe(cell)
 
