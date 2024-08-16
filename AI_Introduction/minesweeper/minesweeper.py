@@ -257,10 +257,8 @@ class MinesweeperAI():
             1) have not already been chosen, and
             2) are not known to be mines
         """
-        i = random.randrange(0, 7)
-        j = random.randrange(0, 7)
 
         move = (i, j) if (i, j) not in self.moves_made.union(self.mines) else None
-        if not move:
+        if move is None:
             self.make_random_move()
         return move
