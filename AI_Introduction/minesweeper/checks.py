@@ -17,8 +17,10 @@
 #     a = a + 1
 
 # --
-import random
+# import random
+#
+# for j in range(20):
+#     i = random.randrange(0, 8)
+#     print(i, end=" ")
 
-for j in range(20):
-    i = random.randrange(0, 8)
-    print(i, end=" ")
+
