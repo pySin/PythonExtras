@@ -25,15 +25,36 @@
 
 # props Syntax
 
+# class Prop:
+#
+#     def __init__(self):
+#         self.__var = None
+#
+#     @property
+#     def var(self):
+#         return self.var
+#
+#     @var.setter
+#     def var(self, value):
+#         self.var = value
+
+# --
+
 class Prop:
 
     def __init__(self):
-        self.__var = None
+        self.__var = set()
 
     @property
     def var(self):
-        return self.var
+        return self.__var
 
-    @var.setter
-    def var(self, value):
-        self.var = value
+    # @var.setter
+    # def var(self, value):
+    #     self.var.add(value)
+
+
+p = Prop()
+p.var.add("Value1")
+p.var.add("Value2")
+print(p.var)
