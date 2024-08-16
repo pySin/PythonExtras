@@ -212,6 +212,8 @@ while True:
                         # print(f"User Made move: {mouse}")
                         # print(f"Cell Coordinates: {move}")
 
+    # if len(ai.mines) == MINES:
+    #     move = None
     # Make a move and update AI knowledge
     if move:
         # print(game.print())
