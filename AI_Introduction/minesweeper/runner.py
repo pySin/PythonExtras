@@ -216,7 +216,6 @@ while True:
     #     move = None
     # Make a move and update AI knowledge
     if move:
-        # print(game.print())
         if game.is_mine(move):
             lost = True
         else:
