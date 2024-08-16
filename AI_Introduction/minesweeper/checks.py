@@ -23,4 +23,17 @@
 #     i = random.randrange(0, 8)
 #     print(i, end=" ")
 
+# props Syntax
 
+class Prop:
+
+    def __init__(self):
+        self.__var = None
+
+    @property
+    def var(self):
+        return self.var
+
+    @var.setter
+    def var(self, value):
+        self.var = value
