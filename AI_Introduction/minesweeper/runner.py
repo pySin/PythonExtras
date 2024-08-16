@@ -223,7 +223,5 @@ while True:
             revealed.add(move)
             # print("Pre-mistake")
             ai.add_knowledge(move, nearby)
-            if ai.mines == MINES:
-                flags = ai.mines.copy()
 
     pygame.display.flip()
