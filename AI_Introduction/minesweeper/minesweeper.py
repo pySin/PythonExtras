@@ -257,8 +257,11 @@ class MinesweeperAI():
             1) have not already been chosen, and
             2) are not known to be mines
         """
+        free_cells = []
+        for i in range(self.height):
+            for j in range(self.width):
+                if (i, j) not in self.moves_made.union(self.mines):
+                    free_cells.append((i, j))
 
-        move = (i, j) if (i, j) not in self.moves_made.union(self.mines) else None
-        if move is None:
-            self.make_random_move()
-        return move
+        if free_cells:
+            return free_cells[random.randrange(len(free_cells))]
