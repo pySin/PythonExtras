@@ -92,8 +92,8 @@ class Sentence():
     def __init__(self, cells, count):
         self.cells = set(cells)
         self.count = count
-        # self.safe_cells = set()
-        # self.found_mines = set()
+        self.__known_mines: set = set()
+        self.__known_safes: set = set()
 
     def __eq__(self, other):
         return self.cells == other.cells and self.count == other.count
@@ -101,14 +101,14 @@ class Sentence():
     def __str__(self):
         return f"{self.cells} = {self.count}"
 
+    @property
     def known_mines(self):
-        # Returns the set of all cells in self.cells known to be mines.
-        # The mines must be removed from the set!!!?!
-        raise NotImplementedError
+        return self.__known_mines
 
+    @property
     def known_safes(self):
         # Returns the set of all cells in self.cells known to be safe.
-        raise NotImplementedError
+        return self.__known_safes
 
     def mark_mine(self, cell):
         """
@@ -116,6 +116,7 @@ class Sentence():
         a cell is known to be a mine.
         """
         if cell in self.cells:
+            self.__known_mines.add(cell)
             self.cells.remove(cell)
             self.count -= 1
 
@@ -126,6 +127,7 @@ class Sentence():
         """
 
         if cell in self.cells:
+            self.__known_safes.add(cell)
             self.cells.remove(cell)
             # self.safe_cells.add(cell)
 
@@ -227,7 +229,7 @@ class MinesweeperAI():
                     [self.safes.add(c) for c in s.cells]
 
         print(f"Sentences in knowledge: {[[s.cells, s.count] for s in self.knowledge]}")
-        print(f"Safe cells in Sentence: {[[s.safe_cells] for s in self.knowledge]}")
+        print(f"Safe cells in Sentence: {[[s.known_safes] for s in self.knowledge]}")
         print(f"Self.Safes {self.safes}")
         print(f"Mines found: {self.mines}")
 
