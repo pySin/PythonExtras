@@ -33,4 +33,9 @@ def play():
     game = Minesweeper(height=HEIGHT, width=WIDTH, mines=MINES)
     ai = MinesweeperAI(height=HEIGHT, width=WIDTH)
 
+    won = lost = False
+    while not (won or lost):
+        # AI choose a move
+        move = ai.make_safe_move() or ai.make_random_move()
+
 
