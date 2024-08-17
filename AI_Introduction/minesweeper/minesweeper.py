@@ -228,10 +228,10 @@ class MinesweeperAI():
                 if s.count == 0 and len(s.cells) != 0:
                     [self.safes.add(c) for c in s.cells]
 
-        print(f"Sentences in knowledge: {[[s.cells, s.count] for s in self.knowledge]}")
-        print(f"Safe cells in Sentence: {[[s.known_safes] for s in self.knowledge]}")
-        print(f"Self.Safes {self.safes}")
-        print(f"Mines found: {self.mines}")
+        # print(f"Sentences in knowledge: {[[s.cells, s.count] for s in self.knowledge]}")
+        # print(f"Safe cells in Sentence: {[[s.known_safes] for s in self.knowledge]}")
+        # print(f"Self.Safes {self.safes}")
+        # print(f"Mines found: {self.mines}")
 
     def make_safe_move(self):
         """
