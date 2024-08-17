@@ -41,4 +41,8 @@ def play():
             won = True
             break
 
+        # Move and update AI
+        if game.is_mine(move):
+            lost = True
+
 
