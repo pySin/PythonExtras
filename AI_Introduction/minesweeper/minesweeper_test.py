@@ -21,12 +21,13 @@ def test(execution_number):
 
 def play1000():
     totalWon = 0
-    for _ in range(10):  # 1000
+    for _ in range(100):  # 1000
         totalWon += play()
 
     print(f"\nWin rate:{totalWon // 10}%")
 
-    assert totalWon >= expectedWinPercent * 10
+    assert totalWon >= expectedWinPercent
+    # assert totalWon >= expectedWinPercent * 10
 
 
 def play():
