@@ -23,3 +23,5 @@ def play1000():
     totalWon = 0
     for _ in range(1000):
         totalWon += play()
+
+    print(f"\nWin rate:{totalWon // 10}%")
