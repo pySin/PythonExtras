@@ -202,7 +202,7 @@ class MinesweeperAI():
                 # Update all near cells if cell in bounds
                 if 0 <= i < self.height and 0 <= j < self.width:
                     all_near_cells.append((i, j))
-        print(f"All near cells: {all_near_cells}")
+        # print(f"All near cells: {all_near_cells}")
         self.knowledge.append(Sentence(all_near_cells, count))
 
         if count == 0:
