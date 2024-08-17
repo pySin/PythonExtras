@@ -37,5 +37,8 @@ def play():
     while not (won or lost):
         # AI choose a move
         move = ai.make_safe_move() or ai.make_random_move()
+        if move is None:
+            won = True
+            break
 
 
