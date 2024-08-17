@@ -44,5 +44,8 @@ def play():
         # Move and update AI
         if game.is_mine(move):
             lost = True
+        else:
+            nearby = game.nearby_mines(move)
+            ai.add_knowledge(move, nearby)
 
 
