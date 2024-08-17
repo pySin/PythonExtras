@@ -48,4 +48,4 @@ def play():
             nearby = game.nearby_mines(move)
             ai.add_knowledge(move, nearby)
 
-
+    return won
