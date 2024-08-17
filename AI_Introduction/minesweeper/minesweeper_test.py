@@ -25,3 +25,5 @@ def play1000():
         totalWon += play()
 
     print(f"\nWin rate:{totalWon // 10}%")
+
+    assert totalWon >= expectedWinPercent * 10
