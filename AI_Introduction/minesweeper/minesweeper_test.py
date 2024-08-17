@@ -28,5 +28,9 @@ def play1000():
 
     assert totalWon >= expectedWinPercent * 10
 
+
 def play():
     game = Minesweeper(height=HEIGHT, width=WIDTH, mines=MINES)
+    ai = MinesweeperAI(height=HEIGHT, width=WIDTH)
+
+
