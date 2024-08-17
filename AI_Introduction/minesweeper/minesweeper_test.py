@@ -27,3 +27,6 @@ def play1000():
     print(f"\nWin rate:{totalWon // 10}%")
 
     assert totalWon >= expectedWinPercent * 10
+
+def play():
+    game = Minesweeper(height=HEIGHT, width=WIDTH, mines=MINES)
