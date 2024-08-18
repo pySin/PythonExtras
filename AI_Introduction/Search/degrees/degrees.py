@@ -65,3 +65,6 @@ def main():
     target = person_id_for_name(input("Name: "))
     if target is None:
         sys.exit("Person not found.")
+
+    path = shortest_path(source, target)
+
