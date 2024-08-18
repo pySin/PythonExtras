@@ -37,3 +37,13 @@ def load_data(directory):
                 "year": row["year"],
                 "stars": set()
             }
+
+    # Load stars
+    with open(f"{directory}/stars.csv", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            try:
+                people[row["person_id"]]["movies"].add(row["movie_id"])
+                movies[row["movie_id"]]["stars"].add(row["person_id"])
+            except KeyError:
+                pass
