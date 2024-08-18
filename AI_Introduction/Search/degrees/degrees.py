@@ -12,3 +12,9 @@ people = {}
 
 # Maps movie_ids to a dictionary of: title, year, stars (a set of person_ids)
 movies = {}
+
+
+def load_data(directory):
+    """
+    Load data from CSV files into memory.
+    """
