@@ -55,7 +55,7 @@ def main():
         sys.exit("Usage: python degrees.py [directory]")
     # directory = sys.argv[1] if len(sys.argv) == 2 else "large"
     directory = sys.argv[1] if len(sys.argv) == 2 else "small"
-    print(f"sys 1: {sys.argv[1]}")
+    # print(f"sys 1: {sys.argv[1]}")
     # directory = "small"
 
     # Load data from files into memory
@@ -103,6 +103,8 @@ def person_id_for_name(name):
     resolving ambiguities as needed.
     """
     person_ids = list(names.get(name.lower(), set()))
+    print(f"Names: {names}")
+    print(f"Person Ids: {person_ids}")
     if len(person_ids) == 0:
         return None
     elif len(person_ids) > 1:
