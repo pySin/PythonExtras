@@ -50,9 +50,13 @@ def load_data(directory):
 
 
 def main():
+    print(f"SYS.argv: {sys.argv}")
     if len(sys.argv) > 2:
         sys.exit("Usage: python degrees.py [directory]")
-    directory = sys.argv[1] if len(sys.argv) == 2 else "large"
+    # directory = sys.argv[1] if len(sys.argv) == 2 else "large"
+    directory = sys.argv[1] if len(sys.argv) == 2 else "small"
+    print(f"sys 1: {sys.argv[1]}")
+    # directory = "small"
 
     # Load data from files into memory
     print("Loading data...")
