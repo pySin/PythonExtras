@@ -22,11 +22,14 @@ def load_data(directory):
     with open(f"{directory}/people.csv", encoding="utf-8") as f:
         reader = csv.DictReader(f)
         for row in reader:
+            # print(f"CSV Dict rows: {row}")
             people[row["id"]] = {
                 "name": row["name"],
                 "birth": row["birth"],
                 "movies": set()
             }
+        print(f"People: {people}")
+        print(f"Names: {names}")
 
     # Load movies
     with open(f"{directory}/movies.csv", encoding="utf-8") as f:
