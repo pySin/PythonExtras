@@ -119,5 +119,6 @@ def neighbors_for_person(person_id):
             neighbors.add((movie_id, person_id))
     return neighbors
 
+
 if __name__ == "__main__":
     main()
