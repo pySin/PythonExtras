@@ -1,6 +1,8 @@
 # Degrees Harvard SC50 AI
 import csv
 import sys
+import util
+
 
 from util import Node, StackFrontier, QueueFrontier
 
@@ -22,14 +24,15 @@ def load_data(directory):
     with open(f"{directory}/people.csv", encoding="utf-8") as f:
         reader = csv.DictReader(f)
         for row in reader:
-            # print(f"CSV Dict rows: {row}")
             people[row["id"]] = {
                 "name": row["name"],
                 "birth": row["birth"],
                 "movies": set()
             }
-        print(f"People: {people}")
-        print(f"Names: {names}")
+            if row["name"].lower() not in names:
+                names[row["name"].lower()] = {row["id"]}
+            else:
+                names[row["name"].lower()].add(row["id"])
 
     # Load movies
     with open(f"{directory}/movies.csv", encoding="utf-8") as f:
@@ -53,13 +56,10 @@ def load_data(directory):
 
 
 def main():
-    print(f"SYS.argv: {sys.argv}")
     if len(sys.argv) > 2:
         sys.exit("Usage: python degrees.py [directory]")
     # directory = sys.argv[1] if len(sys.argv) == 2 else "large"
     directory = sys.argv[1] if len(sys.argv) == 2 else "small"
-    # print(f"sys 1: {sys.argv[1]}")
-    # directory = "small"
 
     # Load data from files into memory
     print("Loading data...")
@@ -69,9 +69,14 @@ def main():
     source = person_id_for_name(input("Name: "))
     if source is None:
         sys.exit("Person not found.")
+    print(source)
     target = person_id_for_name(input("Name: "))
     if target is None:
         sys.exit("Person not found.")
+    print(target)
+    print(f"Names: {names}")
+    print(f"People: {people}")
+    print(f"Movies: {movies}")
 
     path = shortest_path(source, target)
 
@@ -95,9 +100,18 @@ def shortest_path(source, target):
 
     If no possible path, returns None.
     """
+    print(f"Source: {source}")
+    print(f"Target: {target}")
 
-    # TODO
-    raise NotImplementedError
+    # Get neighbours
+    neighbours = neighbors_for_person(source)
+    print(f"Neighbours: {neighbours}")
+
+    parent_node = None
+    # !? node((Movie, actor_id), parent_node, (next_movie_id, next_person_id))
+
+    return None
+    # raise NotImplementedError
 
 
 def person_id_for_name(name):
@@ -106,8 +120,6 @@ def person_id_for_name(name):
     resolving ambiguities as needed.
     """
     person_ids = list(names.get(name.lower(), set()))
-    print(f"Names: {names}")
-    print(f"Person Ids: {person_ids}")
     if len(person_ids) == 0:
         return None
     elif len(person_ids) > 1:
