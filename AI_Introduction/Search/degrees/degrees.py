@@ -69,11 +69,11 @@ def main():
     source = person_id_for_name(input("Name: "))
     if source is None:
         sys.exit("Person not found.")
-    print(source)
+    # print(source)
     target = person_id_for_name(input("Name: "))
     if target is None:
         sys.exit("Person not found.")
-    print(target)
+    # print(target)
     print(f"Names: {names}")
     print(f"People: {people}")
     print(f"Movies: {movies}")
@@ -108,6 +108,7 @@ def shortest_path(source, target):
     print(f"Neighbours: {neighbours}")
 
     parent_node = None
+    # result format [("Movie 1", "Actor 1"), (Movie 2, "Actor 2"), (Movie 3, "Actor 3")]
     # !? node((Movie, actor_id), parent_node, (next_movie_id, next_person_id))
 
     return None
