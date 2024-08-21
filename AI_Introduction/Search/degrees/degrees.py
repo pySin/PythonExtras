@@ -108,7 +108,7 @@ def shortest_path(source, target):
     print(f"Neighbours: {neighbours}")
 
     parent_node = None
-    # result format [("Movie 1", "Actor 1"), (Movie 2, "Actor 2"), (Movie 3, "Actor 3")]
+    # result format [(Movie 2, "Actor 2"), ("Movie 1", "Actor 1"), (Movie 3, "Actor 3")]
     # !? node((Movie, actor_id), parent_node, (next_movie_id, next_person_id))
 
     return None
