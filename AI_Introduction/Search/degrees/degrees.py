@@ -117,7 +117,13 @@ def shortest_path(source, target):
     # result format [(Movie 2, "Actor 2"), ("Movie 1", "Actor 1"), (Movie 3, "Actor 3")]
     # !? node((Movie, actor_id), parent_node, (next_movie_id, next_person_id))
     while True:
-        q_frontier.add(util.Node())
+        removed_node = q_frontier.remove()
+        for current_star in removed_node.action:
+            neighbours = neighbors_for_person(current_star)
+            action = [n[1] for n in neighbours if n[1] != current_star]
+            for parent in [p for p in neighbours if p[1] == current_star]:
+                for state in [s for s in neighbours if parent[0] == s[0] and s[1] != parent[1]]:
+                    q_frontier.add(util.Node(state, parent, ))
 
 
     return None
