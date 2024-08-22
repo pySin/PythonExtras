@@ -106,10 +106,16 @@ def shortest_path(source, target):
     # Get neighbours
     neighbours = neighbors_for_person(source)
     print(f"Neighbours: {neighbours}")
+    current_action = set([n_star[1] for n_star in neighbours if n_star[1] != source])
+    print(f"Connected stars: {current_action}")
 
     parent_node = None
+    q_frontier = util.QueueFrontier
     # result format [(Movie 2, "Actor 2"), ("Movie 1", "Actor 1"), (Movie 3, "Actor 3")]
     # !? node((Movie, actor_id), parent_node, (next_movie_id, next_person_id))
+    while target not in current_action:
+        q_frontier.add(util.Node())
+
 
     return None
     # raise NotImplementedError
