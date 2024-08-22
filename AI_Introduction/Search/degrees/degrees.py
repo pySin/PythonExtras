@@ -113,12 +113,11 @@ def shortest_path(source, target):
 
     parent_node = None
     q_frontier = util.QueueFrontier()
-    # q_frontier.add(Node())
+    q_frontier.add(Node(first_state, None, current_action))
     # result format [(Movie 2, "Actor 2"), ("Movie 1", "Actor 1"), (Movie 3, "Actor 3")]
     # !? node((Movie, actor_id), parent_node, (next_movie_id, next_person_id))
-    while target not in current_action:
-        break
-        # q_frontier.add(util.Node())
+    while True:
+        q_frontier.add(util.Node())
 
 
     return None
