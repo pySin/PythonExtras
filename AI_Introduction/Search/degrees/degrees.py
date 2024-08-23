@@ -108,24 +108,37 @@ def shortest_path(source, target):
     print(f"Neighbours: {neighbours}")
     first_state = [f_state for f_state in neighbours if f_state[1] == source][0]
     print(f"First State: {first_state}")
-    current_action = set([n_star[1] for n_star in neighbours if n_star[1] != source])
-    print(f"Connected stars: {current_action}")
+    action = set([n_star[1] for n_star in neighbours if n_star[1] != source])
+    print(f"Connected stars: {action}")
 
     parent_node = None
     q_frontier = util.QueueFrontier()
-    q_frontier.add(Node(first_state, None, current_action))
-    found_stars = current_action.add(source)
+    q_frontier.add(Node(first_state, parent_node, action))
+    action.add(source)
+    found_stars = action
     # result format [(Movie 2, "Actor 2"), ("Movie 1", "Actor 1"), (Movie 3, "Actor 3")]
     # !? node((Movie, actor_id), parent_node, (next_movie_id, next_person_id))
+    target_found = False
+    degree = 0
     while True:
         removed_node = q_frontier.remove()
+        degree += 1
         for current_star in removed_node.action:
             neighbours = neighbors_for_person(current_star)
             action = set([n[1] for n in neighbours if n[1] not in found_stars])
+            found_stars.union(action)
             for parent in [p for p in neighbours if p[1] == current_star]:
                 for state in [s for s in neighbours if parent[0] == s[0] and s[1] != parent[1]]:
+                    if state[1] == target or degree == 7:
+                        target_found = True
+                        break
                     q_frontier.add(util.Node(state, parent, action))
-
+                if target_found:
+                    break
+            if target_found:
+                break
+        if target_found:
+            break
 
     return None
     # raise NotImplementedError
