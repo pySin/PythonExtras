@@ -83,7 +83,6 @@ def main():
     if path is None:
         print("Not connected.")
     else:
-        print(f"Path: {path}")
         degrees = len(path)
         print(f"{degrees} degrees of separation.")
         path = [(None, source)] + path
@@ -131,7 +130,14 @@ def shortest_path(source, target):
             for parent in [p for p in neighbours if p[1] == current_star]:
                 for state in [s for s in neighbours if parent[0] == s[0] and s[1] != parent[1]]:
                     if state[1] == target:
-                        return q_frontier
+                        link = removed_node.parent
+                        path = [state]
+                        while link is not None:
+                            path.append(link.state)
+                            link = link.parent
+
+                        print(f"Path: {path}")
+                        return path
 
                     q_frontier.add(util.Node(state, parent, action))
         if degree == 6:
