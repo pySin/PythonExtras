@@ -83,6 +83,7 @@ def main():
     if path is None:
         print("Not connected.")
     else:
+        print(f"Path: {path}")
         degrees = len(path)
         print(f"{degrees} degrees of separation.")
         path = [(None, source)] + path
