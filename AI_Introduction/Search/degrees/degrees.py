@@ -126,11 +126,12 @@ def shortest_path(source, target):
         for current_star in removed_node.action:
             neighbours = neighbors_for_person(current_star)
             print(f"Inner Neighbours: {neighbours}")
+            found_stars.union(action)
             action = set([n[1] for n in neighbours if n[1] not in found_stars])
-            # found_stars.union(action)
             for state in neighbours:
-                q_frontier.add(util.Node(state, removed_node, action))
-                print(q_frontier)
+                if state[1] not in found_stars:
+                    q_frontier.add(util.Node(state, removed_node, action))
+                    [print(n.state, n.parent, n.action) for n in q_frontier.frontier]
         return None
                     # ?!? Check your objects MATE.
             # for parent in [p for p in neighbours if p[1] == current_star]:
