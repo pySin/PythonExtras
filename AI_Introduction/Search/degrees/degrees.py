@@ -105,33 +105,51 @@ def shortest_path(source, target):
     print(f"Target: {target}")
 
     # Get neighbours
-    neighbours = neighbors_for_person(source)
-    print(f"Neighbours: {neighbours}")
-    first_state = [f_state for f_state in neighbours if f_state[1] == source][0]
-    print(f"First State: {first_state}")
-    action = set([n_star[1] for n_star in neighbours if n_star[1] != source])
-    print(f"Connected stars: {action}")
+    # neighbours = neighbors_for_person(source)
+    # print(f"Neighbours: {neighbours}")
+    # first_state = [f_state for f_state in neighbours if f_state[1] == source][0]
+    # print(f"First State: {first_state}")
+    # action = set([n_star[1] for n_star in neighbours if n_star[1] != source])
+    # print(f"Connected stars: {action}")
 
-    parent_node = None
-    q_frontier = util.QueueFrontier()
-    q_frontier.add(Node(first_state, parent_node, action))
-    action.add(source)
-    found_stars = action
-
+    # parent_node = None
+    # q_frontier = util.QueueFrontier()
+    # q_frontier.add(Node(first_state, parent_node, action))
+    # action.add(source)
+    # found_stars = action
+    queue_frontier = QueueFrontier()
+    parent = None
+    stars_checked = {source}
     degree = 0
     while True:
-        degree = 1
-        removed_node = q_frontier.remove()
-        print(f"Removed Node State: {removed_node.state}")
-        for current_star in removed_node.action:
-            neighbours = neighbors_for_person(current_star)
-            print(f"Inner Neighbours: {neighbours}")
-            found_stars.union(action)
-            action = set([n[1] for n in neighbours if n[1] not in found_stars])
-            for state in neighbours:
-                if state[1] not in found_stars:
-                    q_frontier.add(util.Node(state, removed_node, action))
-                    [print(n.state, n.parent, n.action) for n in q_frontier.frontier]
+        degree += 1
+        neighbours = neighbors_for_person(source)
+        neighbours = {n for n in neighbours if n[1] != source}
+        neighbour_stars = {n[1] for n in neighbours}
+        stars_checked.union(neighbour_stars)
+        print(f"Neighbors: {neighbours}")
+        for state in neighbours:
+            movie = state[0]
+            star = state[1]
+            action = neighbors_for_person(star)
+            action = {a[1] for a in action if a[1] != star}
+            node = Node(state, parent, action)
+            queue_frontier.add(node)
+            print(queue_frontier.frontier)
+        if degree == 6:
+            break
+
+        # removed_node = q_frontier.remove()
+        # print(f"Removed Node State: {removed_node.state}")
+        # for current_star in removed_node.action:
+        #     neighbours = neighbors_for_person(current_star)
+        #     print(f"Inner Neighbours: {neighbours}")
+        #     found_stars.union(action)
+        #     action = set([n[1] for n in neighbours if n[1] not in found_stars])
+        #     for state in neighbours:
+        #         if state[1] not in found_stars:
+        #             q_frontier.add(util.Node(state, removed_node, action))
+        #             [print(n.state, n.parent, n.action) for n in q_frontier.frontier]
         return None
                     # ?!? Check your objects MATE.
             # for parent in [p for p in neighbours if p[1] == current_star]:
