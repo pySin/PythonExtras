@@ -129,18 +129,13 @@ def shortest_path(source, target):
             found_stars.union(action)
             for parent in [p for p in neighbours if p[1] == current_star]:
                 for state in [s for s in neighbours if parent[0] == s[0] and s[1] != parent[1]]:
-                    if state[1] == target or degree == 7:
-                        target_found = True
-                        break
-                    q_frontier.add(util.Node(state, parent, action))
-                if target_found:
-                    break
-            if target_found:
-                break
-        if target_found:
-            break
+                    if state[1] == target:
+                        return q_frontier
 
-    return None
+                    q_frontier.add(util.Node(state, parent, action))
+        if degree == 6:
+            return None
+
     # raise NotImplementedError
 
 
