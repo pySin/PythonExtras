@@ -118,6 +118,8 @@ def shortest_path(source, target):
     # action.add(source)
     # found_stars = action
     queue_frontier = QueueFrontier()
+    # neighbours = neighbors_for_person(source)
+
     parent = None
     stars_checked = {source}
     degree = 0
@@ -135,7 +137,13 @@ def shortest_path(source, target):
             action = {a[1] for a in action if a[1] != star}
             node = Node(state, parent, action)
             queue_frontier.add(node)
-            print(queue_frontier.frontier)
+            # print(degree)
+            # print(queue_frontier.frontier)
+        pop_node = queue_frontier.frontier.pop()
+        source = pop_node.state[1]
+        print(f"Pop Node: {pop_node.state}")
+        print(f"Parent Node: {pop_node.parent}")
+        print(f"Source: {source}")
         if degree == 6:
             break
 
@@ -150,7 +158,7 @@ def shortest_path(source, target):
         #         if state[1] not in found_stars:
         #             q_frontier.add(util.Node(state, removed_node, action))
         #             [print(n.state, n.parent, n.action) for n in q_frontier.frontier]
-        return None
+        # return None
                     # ?!? Check your objects MATE.
             # for parent in [p for p in neighbours if p[1] == current_star]:
             #     for state in [s for s in neighbours if parent[0] == s[0] and s[1] != parent[1]]:
