@@ -122,10 +122,12 @@ def shortest_path(source, target):
     target_found = False
     degree = 0
     while True:
+        degree = 1
         removed_node = q_frontier.remove()
-        degree += 1
+        print(f"Removed Node State: {removed_node.state}")
         for current_star in removed_node.action:
             neighbours = neighbors_for_person(current_star)
+            # print(f"Inner Neighbours: {neighbours}")
             action = set([n[1] for n in neighbours if n[1] not in found_stars])
             found_stars.union(action)
             for parent in [p for p in neighbours if p[1] == current_star]:
@@ -140,6 +142,8 @@ def shortest_path(source, target):
                         return path
 
                     q_frontier.add(util.Node(state, parent, action))
+                    print(f"Nodes: {[node for node in q_frontier.frontier]}")
+
         if degree == 6:
             return None
 
