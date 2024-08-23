@@ -117,9 +117,7 @@ def shortest_path(source, target):
     q_frontier.add(Node(first_state, parent_node, action))
     action.add(source)
     found_stars = action
-    # result format [(Movie 2, "Actor 2"), ("Movie 1", "Actor 1"), (Movie 3, "Actor 3")]
-    # !? node((Movie, actor_id), parent_node, (next_movie_id, next_person_id))
-    target_found = False
+
     degree = 0
     while True:
         degree = 1
@@ -127,26 +125,35 @@ def shortest_path(source, target):
         print(f"Removed Node State: {removed_node.state}")
         for current_star in removed_node.action:
             neighbours = neighbors_for_person(current_star)
-            # print(f"Inner Neighbours: {neighbours}")
+            print(f"Inner Neighbours: {neighbours}")
             action = set([n[1] for n in neighbours if n[1] not in found_stars])
-            found_stars.union(action)
-            for parent in [p for p in neighbours if p[1] == current_star]:
-                for state in [s for s in neighbours if parent[0] == s[0] and s[1] != parent[1]]:
-                    print(f"State: {state}")
-                    if state[1] == target:
-                        link = removed_node.parent
-                        path = [state]
-                        while link is not None:
-                            path.append(link.state)
-                            link = link.parent
+            # found_stars.union(action)
+            for state in neighbours:
+                q_frontier.add(util.Node(state, removed_node, action))
+                print(q_frontier)
+        return None
+                    # ?!? Check your objects MATE.
+            # for parent in [p for p in neighbours if p[1] == current_star]:
+            #     for state in [s for s in neighbours if parent[0] == s[0] and s[1] != parent[1]]:
+            #         print(f"State: {state}")
+                    # print(f"State: {state}")
+                    # if state[1] == target:
+                    #     link = removed_node.parent
+                    #     print(f" Removed Node State: {removed_node.state}, {removed_node.parent}")
+                    #     print(f"Removed Node Parent: {link}")
+                    #     path = [state]
+                    #     while link is not None:
+                    #         print("Inner While")
+                    #         path.append(link.state)
+                    #         link = link.parent
+                    #
+                    #     return path
+                    #
+                    # q_frontier.add(util.Node(state, parent, action))
+                    # # print(f"Nodes: {[node for node in q_frontier.frontier]}")
 
-                        return path
-
-                    q_frontier.add(util.Node(state, parent, action))
-                    # print(f"Nodes: {[node for node in q_frontier.frontier]}")
-
-        if degree == 6:
-            return None
+        # if degree == 6:
+        #     return None
 
     # raise NotImplementedError
 
