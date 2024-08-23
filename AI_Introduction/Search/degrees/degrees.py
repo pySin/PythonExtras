@@ -132,6 +132,7 @@ def shortest_path(source, target):
             found_stars.union(action)
             for parent in [p for p in neighbours if p[1] == current_star]:
                 for state in [s for s in neighbours if parent[0] == s[0] and s[1] != parent[1]]:
+                    print(f"State: {state}")
                     if state[1] == target:
                         link = removed_node.parent
                         path = [state]
@@ -142,7 +143,7 @@ def shortest_path(source, target):
                         return path
 
                     q_frontier.add(util.Node(state, parent, action))
-                    print(f"Nodes: {[node for node in q_frontier.frontier]}")
+                    # print(f"Nodes: {[node for node in q_frontier.frontier]}")
 
         if degree == 6:
             return None
