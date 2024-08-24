@@ -109,14 +109,23 @@ def shortest_path(source, target):
     first_node = Node((source, ), "first_node_parent", action)
     frontier = QueueFrontier()
     frontier.add(first_node)  # OK: 158, "first_node_parent", {'102', '705', '641', '200', '398'}
+    stars_checked = list(action)
+    stars_checked.append(source)
 
+    degrees = 0
     while True:
+        degrees += 1
         node = frontier.remove()
+        print(f"Current Frontier State: {node.state}")
         for artist_id in node.action:
             neighbours = neighbors_for_person(artist_id)
-            linking_movie = {mp for mp in neighbours if mp[1] == node.state[-1]}.pop()
-            new_node = Node()
-        break
+            linking_movie = {mp[0] for mp in neighbours if mp[1] == node.state[-1]}.pop()
+            # action = {s[1] for s in neighbours if s[1] not in stars_checked}
+            new_node = Node((linking_movie, artist_id), node, action)
+            frontier.add(new_node)
+        [print(f.state, f.parent.state, f.action) for f in frontier.frontier]
+        if degrees == 3:
+            break
 
     return None
 
