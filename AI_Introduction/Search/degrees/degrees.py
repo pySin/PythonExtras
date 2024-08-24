@@ -119,12 +119,19 @@ def shortest_path(source, target):
         print(f"Current Frontier State: {node.state}")
         for artist_id in node.action:
             neighbours = neighbors_for_person(artist_id)
+            print(f"Artist ID: {artist_id}")
+            # print(f"Stars Checked: {stars_checked}")
+            # print(f"Neighbours: {neighbours}")
             linking_movie = {mp[0] for mp in neighbours if mp[1] == node.state[-1]}.pop()
-            # action = {s[1] for s in neighbours if s[1] not in stars_checked}
+            action = {s[1] for s in neighbours if s[1] not in stars_checked}
+            if not action:
+                continue
+            # print(f"New Stars: {action}")
+            # action = {s[1] for s in neighbours}
             new_node = Node((linking_movie, artist_id), node, action)
             frontier.add(new_node)
-        [print(f.state, f.parent.state, f.action) for f in frontier.frontier]
-        if degrees == 3:
+        # [print(f.state, f.parent.state, f.action) for f in frontier.frontier]
+        if degrees == 5:
             break
 
     return None
