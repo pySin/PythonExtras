@@ -106,7 +106,7 @@ def shortest_path(source, target):
 
     neighbours = neighbors_for_person(source)
     action = {n[1] for n in neighbours if n[1] != source}
-    first_node = Node(source, "first_node_parent", action)
+    first_node = Node((source, ), "first_node_parent", action)
     frontier = QueueFrontier()
     frontier.add(first_node)  # OK: 158, "first_node_parent", {'102', '705', '641', '200', '398'}
 
@@ -114,6 +114,8 @@ def shortest_path(source, target):
         node = frontier.remove()
         for artist_id in node.action:
             neighbours = neighbors_for_person(artist_id)
+            linking_movie = {mp for mp in neighbours if mp[1] == node.state[-1]}.pop()
+            new_node = Node()
         break
 
     return None
