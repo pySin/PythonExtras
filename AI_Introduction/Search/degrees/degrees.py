@@ -131,7 +131,7 @@ def shortest_path(source, target):
             new_node = Node((linking_movie, artist_id), node, action)
             frontier.add(new_node)
         # [print(f.state, f.parent.state, f.action) for f in frontier.frontier]
-        if degrees == 5:
+        if degrees == 7:
             break
 
     return None
