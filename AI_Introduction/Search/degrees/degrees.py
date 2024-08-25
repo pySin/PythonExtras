@@ -58,8 +58,8 @@ def load_data(directory):
 def main():
     if len(sys.argv) > 2:
         sys.exit("Usage: python degrees.py [directory]")
-    # directory = sys.argv[1] if len(sys.argv) == 2 else "large"
-    directory = sys.argv[1] if len(sys.argv) == 2 else "small"
+    directory = sys.argv[1] if len(sys.argv) == 2 else "large"
+    # directory = sys.argv[1] if len(sys.argv) == 2 else "small"
 
     # Load data from files into memory
     print("Loading data...")
@@ -74,9 +74,9 @@ def main():
     if target is None:
         sys.exit("Person not found.")
     # print(target)
-    print(f"Names: {names}")
-    print(f"People: {people}")
-    print(f"Movies: {movies}")
+    # print(f"Names: {names}")
+    # print(f"People: {people}")
+    # print(f"Movies: {movies}")
 
     path = shortest_path(source, target)
 
@@ -151,6 +151,7 @@ def shortest_path(source, target):
                     if new_node.parent == "first_node_parent":
                         print(f"Source Reached: {new_node.state}")
                         states.append((final_movie, target))
+                        print(f"Stars Checked: {stars_checked}")
                         return states
 
         # print(f"Stars Checked: {stars_checked}")
