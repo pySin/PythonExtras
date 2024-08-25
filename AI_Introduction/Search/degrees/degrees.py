@@ -125,9 +125,10 @@ def shortest_path(source, target):
             # print(f"Neighbours: {neighbours}")
             linking_movie = {mp[0] for mp in neighbours if mp[1] == node.state[-1]}.pop()
             action = {s[1] for s in neighbours if s[1] not in stars_checked}
-            if not action:
-                continue
             stars_checked.add(artist_id)
+            if not action:
+                print(f"Not Action!")
+                continue
             # print(f"New Stars: {action}")
             # action = {s[1] for s in neighbours}
             new_node = Node((linking_movie, artist_id), node, action)
