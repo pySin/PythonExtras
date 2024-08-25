@@ -115,6 +115,7 @@ def shortest_path(source, target):
 
     degrees = 0
     while True:
+        states = []
         source_reached = False
         degrees += 1
         node = frontier.remove()
@@ -138,20 +139,20 @@ def shortest_path(source, target):
             new_node = Node((linking_movie, artist_id), node, action)
             frontier.add(new_node)
             if target in new_node.action:
-                print(f"Target {people[target]['name']} Found in: {new_node.state}")
+                # print(f"Target {people[target]['name']} Found in: {new_node.state}")
                 final_movie = [movie for movie in movies if target
                                in movies[movie]["stars"] and artist_id in movies[movie]["stars"]][0]
-                print(f"Final Movie: {final_movie}")
+                # print(f"Final Movie: {final_movie}")
                 while True:
-                    print(f"New node data: {new_node.state}, {new_node.parent}, {new_node.action}")
+                    # print(f"New node data: {new_node.state}, {new_node.parent}, {new_node.action}")
+                    states.append(new_node.state)
                     new_node = new_node.parent
-                    print(f"New Node State: {new_node.state}")
+                    # print(f"New Node State: {new_node.state}")
                     if new_node.parent == "first_node_parent":
                         print(f"Source Reached: {new_node.state}")
-                        source_reached = True
-                        break
-        if source_reached:
-            break
+                        states.append((final_movie, target))
+                        return states
+
         # print(f"Stars Checked: {stars_checked}")
         # [print(f.state, f.parent.state, f.action) for f in frontier.frontier]
         if degrees == 4:
