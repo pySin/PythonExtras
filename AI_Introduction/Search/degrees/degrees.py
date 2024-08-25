@@ -143,6 +143,7 @@ def shortest_path(source, target):
                                in movies[movie]["stars"] and artist_id in movies[movie]["stars"]][0]
                 print(f"Final Movie: {final_movie}")
                 while True:
+                    print(f"New node data: {new_node.state}, {new_node.parent}, {new_node.action}")
                     new_node = new_node.parent
                     print(f"New Node State: {new_node.state}")
                     if new_node.parent == "first_node_parent":
