@@ -115,26 +115,44 @@ def shortest_path(source, target):
 
     degrees = 0
     while True:
+        source_reached = False
         degrees += 1
         node = frontier.remove()
-        print(f"Current Frontier State: {node.state}")
+        # print(f"Current Frontier State: {node.state}")
         for artist_id in node.action:
+            if artist_id in stars_checked:
+                continue
             neighbours = neighbors_for_person(artist_id)
-            print(f"Artist ID: {artist_id}")
+            # print(f"Artist ID: {artist_id}")
             # print(f"Stars Checked: {stars_checked}")
             # print(f"Neighbours: {neighbours}")
             linking_movie = {mp[0] for mp in neighbours if mp[1] == node.state[-1]}.pop()
-            action = {s[1] for s in neighbours if s[1] not in stars_checked}
             stars_checked.add(artist_id)
+            action = {s[1] for s in neighbours if s[1] not in stars_checked}
+            # print(f"Current Action: {action}")
             if not action:
-                print(f"Not Action!")
+                # print(f"Not Action!")
                 continue
             # print(f"New Stars: {action}")
             # action = {s[1] for s in neighbours}
             new_node = Node((linking_movie, artist_id), node, action)
             frontier.add(new_node)
-        print(f"Stars Checked: {stars_checked}")
-        [print(f.state, f.parent.state, f.action) for f in frontier.frontier]
+            if target in new_node.action:
+                print(f"Target {people[target]['name']} Found in: {new_node.state}")
+                final_movie = [movie for movie in movies if target
+                               in movies[movie]["stars"] and artist_id in movies[movie]["stars"]][0]
+                print(f"Final Movie: {final_movie}")
+                while True:
+                    new_node = new_node.parent
+                    print(f"New Node State: {new_node.state}")
+                    if new_node.parent == "first_node_parent":
+                        print(f"Source Reached: {new_node.state}")
+                        source_reached = True
+                        break
+        if source_reached:
+            break
+        # print(f"Stars Checked: {stars_checked}")
+        # [print(f.state, f.parent.state, f.action) for f in frontier.frontier]
         if degrees == 4:
             break
 
