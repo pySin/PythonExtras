@@ -134,8 +134,8 @@ def shortest_path(source, target):
             if not action:
                 # print(f"Not Action!")
                 continue
-            # print(f"New Stars: {action}")
-            # action = {s[1] for s in neighbours}
+            # print(f"New Stars: {action}") # Demi Moore
+            # action = {s[1] for s in neighbours} # Ursula Andress
             new_node = Node((linking_movie, artist_id), node, action)
             frontier.add(new_node)
             if target in new_node.action:
@@ -145,7 +145,8 @@ def shortest_path(source, target):
                 # print(f"Final Movie: {final_movie}")
                 while True:
                     # print(f"New node data: {new_node.state}, {new_node.parent}, {new_node.action}")
-                    states.append(new_node.state)
+                    # states.append(new_node.state)
+                    states.insert(0, new_node.state)
                     new_node = new_node.parent
                     # print(f"New Node State: {new_node.state}")
                     if new_node.parent == "first_node_parent":
@@ -153,8 +154,8 @@ def shortest_path(source, target):
                         states.append((final_movie, target))
                         print(f"Stars Checked: {stars_checked}")
                         print(f"Length Stars Checked: {len(stars_checked)}")
-                        # return states  # Fix improper record shift
-                        return [('101523', '5460'), ('80025', '1831'), ('66212', '266')]
+                        return states  # Fix improper record shift
+                        # return [('101523', '5460'), ('80025', '1831'), ('66212', '266')]
 
         # print(f"Stars Checked: {stars_checked}")
         # [print(f.state, f.parent.state, f.action) for f in frontier.frontier]
