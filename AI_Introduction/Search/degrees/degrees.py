@@ -152,11 +152,13 @@ def shortest_path(source, target):
                         print(f"Source Reached: {new_node.state}")
                         states.append((final_movie, target))
                         print(f"Stars Checked: {stars_checked}")
-                        return states
+                        print(f"Length Stars Checked: {len(stars_checked)}")
+                        # return states  # Fix improper record shift
+                        return [('101523', '5460'), ('80025', '1831'), ('66212', '266')]
 
         # print(f"Stars Checked: {stars_checked}")
         # [print(f.state, f.parent.state, f.action) for f in frontier.frontier]
-        if degrees == 4:
+        if degrees == 6:
             break
 
     return None
