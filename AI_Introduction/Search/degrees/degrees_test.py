@@ -22,3 +22,8 @@ def test_zero_degree():
     assert shortest_path(source, target) is None
 
 
+def test_one_degree():
+    source = person_id_for_name("Tom Cruise")
+    target = person_id_for_name("Lea Thompson")
+    assert len(shortest_path(source, target)) == 1
+
