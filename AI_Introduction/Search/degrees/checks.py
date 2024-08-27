@@ -31,5 +31,3 @@ for i in range(len(numbers) + 1):
         break
     print(f"Numbers: {ec.nums}")
     ec.remove_num()
-
-
