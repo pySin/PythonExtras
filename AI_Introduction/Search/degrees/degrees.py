@@ -110,6 +110,7 @@ def shortest_path(source, target):
     if target in action:
         target_data = [d for d in neighbours if d[1] == target]
         return target_data
+
     frontier = QueueFrontier()
     frontier.add(first_node)  # OK: 158, "first_node_parent", {'102', '705', '641', '200', '398'}
     #stars_checked = list(action)
