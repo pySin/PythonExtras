@@ -32,3 +32,9 @@ def test_two_degree():
     source = person_id_for_name("Tom Cruise")
     target = person_id_for_name("Tom Hanks")
     assert len(shortest_path(source, target)) == 2
+
+
+def test_three_degree():
+    source = person_id_for_name("Emma Watson")
+    target = person_id_for_name("Jennifer Lawrence")
+    assert len(shortest_path(source, target)) == 3
