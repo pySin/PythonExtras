@@ -117,6 +117,7 @@ def shortest_path(source, target):
     while True:
         states = []
         source_reached = False
+        if frontier.empty()
         degrees += 1
         node = frontier.remove()
         # print(f"Current Frontier State: {node.state}")
