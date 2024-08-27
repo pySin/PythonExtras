@@ -40,4 +40,8 @@ def test_three_degree():
     assert len(shortest_path(source, target)) == 3
 
 
+def test_four_degree():
+    source = person_id_for_name("Fred Astaire")
+    target = person_id_for_name("Mohamed Zinet")
+    assert len(shortest_path(source, target)) == 4
 
