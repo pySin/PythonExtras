@@ -107,6 +107,8 @@ def shortest_path(source, target):
     neighbours = neighbors_for_person(source)
     action = {n[1] for n in neighbours if n[1] != source}
     first_node = Node((source, ), "first_node_parent", action)
+    if target in action:
+        return
     frontier = QueueFrontier()
     frontier.add(first_node)  # OK: 158, "first_node_parent", {'102', '705', '641', '200', '398'}
     #stars_checked = list(action)
